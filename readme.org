@@ -1,0 +1,29 @@
+* my-dotfiles
+
+** Setup
+```sh
+git init --bare $HOME/.cfg
+alias config='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+config remote add origin git@github.com:xelamanster/dotfiles.git
+```
+
+** Replication
+```sh
+git clone --separate-git-dir=$HOME/.cfg git@github.com:xelamanster/dotfiles.git my-dotfiles-tmp
+rsync --recursive --verbose --exclude '.git' cfg-tmp/ $HOME/
+rm --recursive my-dotfiles-tmp
+```
+
+** Configuration
+```sh
+config config status.showUntrackedFiles no
+config remote set-url origin git@github.com:xelamanster/dotfiles.git
+```
+
+** Usage
+```sh
+config status
+config add .gitconfig
+config commit -m 'Add gitconfig'
+config push
+```
