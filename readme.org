@@ -9,9 +9,9 @@ config remote add origin git@github.com:xelamanster/dotfiles.git
 
 ** Replication
 #+BEGIN_SRC bash
-git clone --separate-git-dir=$HOME/.cfg git@github.com:xelamanster/dotfiles.git my-dotfiles-tmp
+git clone --separate-git-dir=$HOME/.cfg git@github.com:xelamanster/dotfiles.git cfg-tmp
 rsync --recursive --verbose --exclude '.git' cfg-tmp/ $HOME/
-rm --recursive my-dotfiles-tmp
+rm --recursive cfg-tmp
 #+END_SRC
 
 ** Configuration
